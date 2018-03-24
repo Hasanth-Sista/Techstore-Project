@@ -1,0 +1,44 @@
+.heading {
+  font-family: fantasy;
+  text-align: center;
+  color: tomato;
+  font-size: 50px;
+}
+
+nav {
+  background-color: gray;
+  padding: 15px;
+}
+
+.home {
+  margin-left: 15px;
+  font-family: 'Times New Roman', Times, serif;
+  color: whitesmoke;
+  display: inline-block;
+}
+
+.about {
+  margin-left: 15px;
+  font-family: 'Times New Roman', Times, serif;
+  color: whitesmoke;
+  display: inline-block;
+}
+
+.contact {
+  margin-left: 15px;
+  font-family: 'Times New Roman', Times, serif;
+  color: whitesmoke;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.searchbar {
+  float: right;
+  color: whitesmoke;
+  margin-right: 10px;
+}
+

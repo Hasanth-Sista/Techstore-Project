@@ -1,0 +1,44 @@
+<div class=row style="padding: 10px;">
+  <div class="col-xl-2">
+  </div>
+  <div class="col-xl-10">
+    <div class="row" *ngFor="let prod of product">
+      <div class="col-xl-3">
+        <img src="assets/images/{{prod.product_img}}.png">
+      </div>
+      <div class="col-xl-9">
+        <table>
+          <tr>
+            <td class="title">Product Name</td>
+            <td class="textfont">
+              {{prod.product_name}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="title">Product Description</td>
+            <td class="textfont">
+              {{prod.product_desc}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="title">Product Price</td>
+            <td class="textfont">
+              <div>{{prod.product_price}}$</div>
+            </td>
+          </tr>
+          
+          
+        </table>
+        <div>
+          <input value="See Specs" type="button" class="add col-xl-3">
+        </div>
+
+        <div>
+          <input value="Add to Cart" type="button" class="add col-xl-3">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

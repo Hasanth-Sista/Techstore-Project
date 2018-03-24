@@ -1,0 +1,19 @@
+a{
+    float: right;
+    margin-right:10px;
+    color:white;
+}
+p{
+    color:white;
+    margin-bottom:0;
+}
+.copyright {
+    text-align:center;
+}
+.footer{
+    width: 100%;
+    bottom: 0;
+    background-color: #343a40!important;
+    position: fixed;
+    height: 30px;
+}
