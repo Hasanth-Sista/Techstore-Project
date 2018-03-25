@@ -6,6 +6,8 @@ import { AppModule } from '../app.module';
 import{AppRoutingModule} from '../app.routing';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import { UserDetails } from '../models/user-details';
+import { LoginService } from '../services/login.service';
 
 
 @Component({
@@ -16,12 +18,16 @@ import 'rxjs/add/operator/switchMap';
 export class HeaderComponent implements OnInit {
   search: Search;
   product : Product;
+  user: UserDetails;
 
-  constructor(private searchService: SearchService,  private router: Router) { }
+  constructor(private searchService: SearchService,  private router: Router,private loginService:LoginService) { }
 
   ngOnInit() {
     this.search = new Search();
+    this.user=new UserDetails();
+    
     this.searchService.currentObject.subscribe(product=>this.product=product);
+    this.loginService.userObject.subscribe(user=>this.user=user);
   }
 
   searchClick() {
@@ -31,6 +37,7 @@ export class HeaderComponent implements OnInit {
       this.searchService.searchResult(this.search.searchElement).subscribe(
         (success)=>{
           console.log(success);
+          this.search.searchElement=null;
           this.product=success.output;
           this.searchService.changeObject(this.product);
           this.router.navigate(['./display']);
@@ -43,9 +50,12 @@ export class HeaderComponent implements OnInit {
   loginClick(){
     this.router.navigate(['./login']);
   }
+  logoutClick(){
+    this.loginService.changeObject(null);
+    this.router.navigate(['']);
+  }
   signUpClick(){
     this.router.navigate(['./signup']);
- 
   }
 
 }

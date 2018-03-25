@@ -7,13 +7,19 @@ import { DisplayComponent } from './display/display.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { SpecificationsComponent } from './specifications/specifications.component';
 
 const APP_ROUTES: Routes = [
   { path: 'main', component : MainComponent },  
   { path: '', redirectTo:'/main', pathMatch:'full' },
     {path: 'display', component:DisplayComponent},
     {path:'login',component:LoginComponent},
-    {path:'signup',component:SignupComponent}
+    {path:'signup',component:SignupComponent},
+    {path:'about',component:AboutComponent},
+    {path:'contact',component:ContactComponent},
+    {path:'specs',component:SpecificationsComponent}
 ];
 
 @NgModule({

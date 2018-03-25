@@ -15,7 +15,6 @@ export class DisplayComponent implements OnInit {
 
   ngOnInit() {
     this.searchService.currentObject.subscribe(product=>this.product = product);
-    
   }
 
 }

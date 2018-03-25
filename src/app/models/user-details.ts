@@ -1,5 +1,6 @@
 export class UserDetails {
     user_id : String;
+    username :String;
     firstname : String;
     last:String;
     address:String;
@@ -10,4 +11,6 @@ export class UserDetails {
     password : String;
     confirmPassword:String;
     phone : String;
+
+    message:String;
 }

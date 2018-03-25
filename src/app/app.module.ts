@@ -12,6 +12,10 @@ import { AppRoutingModule } from './app.routing';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { SpecificationsComponent } from './specifications/specifications.component';
+import { LoginService } from './services/login.service';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -22,7 +26,10 @@ import { SignupComponent } from './signup/signup.component';
     DisplayComponent,
     MainComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SpecificationsComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     AppRoutingModule,    
@@ -30,7 +37,7 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     HttpModule
   ],
-  providers: [SearchService],
+  providers: [SearchService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

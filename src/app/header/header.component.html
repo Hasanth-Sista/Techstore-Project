@@ -8,22 +8,43 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home
+          <a class="nav-link" [routerLink]="['/main']">Home
             <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" [routerLink]="['/about']">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" [routerLink]="['/contact']">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+              <div *ngIf="user!=null" style="color: white;margin-left: 150px;">Hello {{user.username}}</div>
+          </a>
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">
         <input class="form-control mr-sm-2" type="text" [(ngModel)]="search.searchElement" name="searchElement" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0 " style="margin-right: .5rem!important;" type="submit" (click)="searchClick()">Search</button>
-        <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right: .5rem!important;" type="submit" (click)="loginClick()">Login</button>
+        
+        <div *ngIf="user==null;else other">
+
+        <button class="btn btn-outline-success my-2 my-sm-0 " 
+        style="margin-right: .5rem!important;" type="submit" 
+        (click)="loginClick()">Login</button>
+        </div>
+        <ng-template #other>
+        <button class="btn btn-outline-success my-2 my-sm-0 " 
+        style="margin-right: .5rem!important;" type="submit" 
+        (click)="logoutClick()">Logout</button>
+        </ng-template>
+
+        
         <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right: .5rem!important;" type="submit" (click)="signUpClick()">SignUp</button>
+        <a href="#">
+            <img src="https://png.icons8.com/metro/50/f39c12/shopping-cart.png">
+        </a>
         
       </form>
     </div>

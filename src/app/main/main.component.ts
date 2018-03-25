@@ -25,7 +25,6 @@ export class MainComponent implements OnInit {
   }
   goToTabletsPage(s: String) {
     this.search.searchElement = s;
-    console.log(s);
     this.searchService.searchResult(this.search.searchElement).subscribe(
       (success) => {
         console.log(success);

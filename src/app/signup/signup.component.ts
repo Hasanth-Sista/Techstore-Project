@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDetails } from '../models/user-details';
 import { error } from 'util';
+import { SearchService } from '../services/search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -8,16 +10,34 @@ import { error } from 'util';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  user:UserDetails;
+  user: UserDetails;
+  message: String;
 
-  constructor() { }
+  constructor(private service: SearchService, private router: Router) { }
 
   ngOnInit() {
-    this.user=new UserDetails();
+    this.user = new UserDetails();
+    this.message = '';
   }
-  onSignUpSubmit(){
-    if(this.user.password!=this.user.confirmPassword){
-      location.reload();
+  onSignUpSubmit() {
+    if (this.user.username == null || this.user.firstname == null || this.user.last == null ||
+      this.user.password == null || this.user.confirmPassword == null || this.user.address == null
+      || this.user.city == null || this.user.phone == null || this.user.email == null) {
+      this.message = "All fields are mandatory";
+      this.router.navigate(['./signup']);
+    }
+    if (this.message == '') {
+      this.service.signUpUser(this.user).subscribe(
+        (success) => {
+          console.log(success.output);
+          this.message = success.output['message'];
+          this.router.navigate(['./signup']);
+        },
+        (error) => {
+          this.message = error.output;
+          this.router.navigate(['./signup']);
+        }
+      );
     }
   }
 }
