@@ -24,7 +24,7 @@
                 <a style="color:white;" class="button" (click)="goToTabletsPage('iphone')">iPhone</a>
               </li>
               <li>
-                <a style="color:white;" class="button" (click)="goToTabletsPage('one')">One Plus</a>
+                <a style="color:white;" class="button" (click)="goToTabletsPage('oneplus')">One Plus</a>
               </li>
             </ul>
           </li>
@@ -84,7 +84,7 @@
       <img class="product-image" src="assets/images/1001.png" alt="Generic placeholder image" width="140" height="140">
       <h2 style="font-size: 100%;">Apple-Macbook Air-13.3</h2>
       <p>
-        <a class="btn btn-secondary" [routerLink]="['/specs']" role="button">View details &raquo;</a>
+        <a class="btn btn-secondary" (click)="goToTabletsPage('apple-macbook')" role="button">View details &raquo;</a>
       </p>
     </div>
     <!-- /.col-lg-4 -->
@@ -92,22 +92,22 @@
       <img class="product-image" src="assets/images/1002.png" alt="Generic placeholder image" width="140" height="140">
       <h2 style="font-size: 100%;">Asus Zenbook</h2>
       <p>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
+        <a class="btn btn-secondary" (click)="goToTabletsPage('asus zen')" role="button">View details &raquo;</a>
       </p>
     </div>
     <!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <img class="product-image" src="assets/images/2001.png" alt="Generic placeholder image" width="140" height="140">
-      <h2 style="font-size: 100%;">iPhone X</h2>
+      <h2 style="font-size: 100%;" >iPhone X</h2>
       <p>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
+        <a class="btn btn-secondary" (click)="goToTabletsPage('iPhone')" role="button">View details &raquo;</a>
       </p>
     </div>
     <div class="col-lg-4">
       <img class="product-image" src="assets/images/3001.png" alt="Generic placeholder image" width="140" height="140">
       <h2 style="font-size: 100%;">Canon Printer</h2>
       <p>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
+        <a class="btn btn-secondary" (click)="goToTabletsPage('Canon')" role="button">View details &raquo;</a>
       </p>
     </div>
 
@@ -115,7 +115,7 @@
       <img class="product-image" src="assets/images/5001.png" alt="Generic placeholder image" width="140" height="140">
       <h2 style="font-size: 100%;">Sandisk Micro SD</h2>
       <p>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
+        <a class="btn btn-secondary" (click)="goToTabletsPage('Sandisk')" role="button">View details &raquo;</a>
       </p>
     </div>
 
@@ -124,7 +124,7 @@
       <img class="product-image" src="assets/images/2002.png" alt="Generic placeholder image" width="140" height="140">
       <h2 style="font-size: 100%;">OnePlus 5T</h2>
       <p>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
+        <a class="btn btn-secondary" (click)="goToTabletsPage('OnePlus 5T')" role="button">View details &raquo;</a>
       </p>
     </div>
     <!-- /.col-lg-4 -->

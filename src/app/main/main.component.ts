@@ -19,7 +19,6 @@ export class MainComponent implements OnInit {
   constructor(private searchService: SearchService, private router: Router) { }
 
   ngOnInit() {
-
     this.search = new Search();
     this.searchService.currentObject.subscribe(product => this.product = product);
   }
