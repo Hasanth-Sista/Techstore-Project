@@ -1,3 +1,183 @@
-<p>
-  specifications works!
-</p>
+<div class=row style="padding: 10px;">
+  <div class="col-xl-2">
+  </div>
+  <div class="col-xl-10">
+    <div class="row" *ngFor="let prod of product">
+      <div class="col-xl-3">
+        <img src="assets/images/{{prod.product_img}}.png">
+      </div>
+      <div class="col-xl-9">
+        <table>
+
+          <tr>
+            <td class="title">Product Id</td>
+            <td class="textfont">
+              {{prod.product_id}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="title">Product Name</td>
+            <td class="textfont">
+              {{prod.product_name}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="title">Product Description</td>
+            <td class="textfont">
+              {{prod.product_desc}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="title">Product Price</td>
+            <td class="textfont">
+              <div>{{prod.product_price}}$</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.screen_size!=null">
+            <td class="title">Screen Size</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.screen_size}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.touch_screen!=null">
+            <td class="title">Touch Screen</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.touch_screen}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.ram!=null">
+            <td class="title">Ram</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.ram}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.os!=null">
+            <td class="title">OS</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.os}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.hard_disk!=null">
+            <td class="title">Hard Disk</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.hard_disk}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.processor!=null">
+            <td class="title">Processor</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.processor}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.dimensions!=null">
+            <td class="title">Dimensions</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.dimensions}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.batteries!=null">
+            <td class="title">Batteries</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.batteries}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.camera!=null">
+            <td class="title">Camera</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.camera}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.memory!=null">
+            <td class="title">Memory</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.memory}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.storage!=null">
+            <td class="title">Storage</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.storage}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.resolution!=null">
+            <td class="title">Resolution</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.resolution}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.weight!=null">
+            <td class="title">Weight</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.weight}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.Wifi!=null">
+            <td class="title">Wifi</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.Wifi}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.printer_type!=null">
+            <td class="title">Printer Type</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.printer_type}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.capacity!=null">
+            <td class="title">Capacity</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.capacity}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.transfer_speed!=null">
+            <td class="title">Transfer Speed</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.transfer_speed}}</div>
+            </td>
+          </tr>
+
+          <tr *ngIf="prod.product_specs.ink_color!=null">
+            <td class="title">Ink Color</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.ink_color}}</div>
+            </td>
+          </tr>
+          <tr *ngIf="prod.product_specs.model_number!=null">
+            <td class="title">Model Number</td>
+            <td class="textfont">
+              <div>{{prod.product_specs.model_number}}</div>
+            </td>
+          </tr>
+          <tr>
+            <div>
+              <input value="Add to Cart" (click)="addToCart(prod.product_id,prod.product_price)" type="button">
+            </div>
+          </tr>
+        </table>
+        <div>
+          <p *ngIf="message!=null" style="color: red;">{{message}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,16 +10,18 @@ import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { SpecificationsComponent } from './specifications/specifications.component';
+import { CartComponent } from './cart/cart.component';
 
 const APP_ROUTES: Routes = [
   { path: 'main', component : MainComponent },  
-  { path: '', redirectTo:'/main', pathMatch:'full' },
     {path: 'display', component:DisplayComponent},
     {path:'login',component:LoginComponent},
     {path:'signup',component:SignupComponent},
     {path:'about',component:AboutComponent},
     {path:'contact',component:ContactComponent},
-    {path:'specs',component:SpecificationsComponent}
+    {path:'specs',component:SpecificationsComponent},
+    {path:'cart',component:CartComponent},
+    { path: '', redirectTo:'/main', pathMatch:'full' }
 ];
 
 @NgModule({

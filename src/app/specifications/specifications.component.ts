@@ -3,6 +3,10 @@ import { Product } from '../models/product';
 import { ProductSpecs } from '../models/product-specs';
 import { SearchService } from '../services/search.service';
 import { Router } from '@angular/router';
+import { Cart } from '../models/cart';
+import { CartService } from '../services/cart.service';
+import { LoginService } from '../services/login.service';
+import { UserDetails } from '../models/user-details';
 
 @Component({
   selector: 'app-specifications',
@@ -11,17 +15,25 @@ import { Router } from '@angular/router';
 })
 export class SpecificationsComponent implements OnInit {
   product:Product;
-  productSpecs:ProductSpecs;
+  cart:Cart;
+  user:UserDetails;
+  message:String;
 
-  constructor(private searchService:SearchService,private route:Router) { }
+  constructor(private searchService:SearchService,private route:Router,
+    private cartService:CartService,private loginService:LoginService)
+   { }
 
   ngOnInit() {
-    this.product=new Product();
-    this.productSpecs=new ProductSpecs();
     this.searchService.currentObject.subscribe(product=>this.product = product);
+    this.cartService.cartObject.subscribe(cart=>this.cart=cart);
+    this.loginService.userObject.subscribe(user=>this.user=user);   
+    this.message=null;
   }
-  getSpecs(){
-    
+  addToCart(id:String,price:String){
+    this.cart=new Cart();
+    this.cart.product_id=id;
+    this.cart.price=Number(price);
+    this.message="Product id "+id+"  "+this.cartService.changeCart(this.cart);
   }
-
+  
 }

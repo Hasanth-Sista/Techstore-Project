@@ -16,6 +16,8 @@ import { SpecificationsComponent } from './specifications/specifications.compone
 import { LoginService } from './services/login.service';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { CartComponent } from './cart/cart.component';
+import { CartService } from './services/cart.service';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { ContactComponent } from './contact/contact.component';
     SignupComponent,
     SpecificationsComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    CartComponent
   ],
   imports: [
     AppRoutingModule,    
@@ -37,7 +40,7 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     HttpModule
   ],
-  providers: [SearchService,LoginService],
+  providers: [SearchService,LoginService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

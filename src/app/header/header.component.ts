@@ -8,6 +8,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { UserDetails } from '../models/user-details';
 import { LoginService } from '../services/login.service';
+import { CartService } from '../services/cart.service';
+import { Cart } from '../models/cart';
 
 
 @Component({
@@ -19,8 +21,9 @@ export class HeaderComponent implements OnInit {
   search: Search;
   product : Product;
   user: UserDetails;
+  cart:Cart;
 
-  constructor(private searchService: SearchService,  private router: Router,private loginService:LoginService) { }
+  constructor(private cartService:CartService, private searchService: SearchService,  private router: Router,private loginService:LoginService) { }
 
   ngOnInit() {
     this.search = new Search();
@@ -28,6 +31,7 @@ export class HeaderComponent implements OnInit {
     
     this.searchService.currentObject.subscribe(product=>this.product=product);
     this.loginService.userObject.subscribe(user=>this.user=user);
+    this.cartService.cartObject.subscribe(cart=>this.cart=cart);
   }
 
   searchClick() {
@@ -52,10 +56,12 @@ export class HeaderComponent implements OnInit {
   }
   logoutClick(){
     this.loginService.changeObject(null);
+    this.cartService.zeroCart();
     this.router.navigate(['']);
   }
   signUpClick(){
     this.router.navigate(['./signup']);
   }
+  
 
 }

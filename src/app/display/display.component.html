@@ -28,17 +28,21 @@
               <div>{{prod.product_price}}$</div>
             </td>
           </tr>
-          
-          
+          <tr>
+            <div>
+              <input value="See Specifications" (click)="seeSpecs(prod.product_name)" type="button">
+            </div>
+          </tr>
+          <tr>
+            <div>
+              <input value="Add to Cart" (click)="addToCart(prod.product_id,prod.product_price)" type="button">
+            </div>
+          </tr>
         </table>
-        <div>
-          <input value="See Specifications" type="button" class="add col-xl-3">
-        </div>
-
-        <div>
-          <input value="Add to Cart" type="button" class="add col-xl-3">
-        </div>
       </div>
+    </div>
+    <div>
+      <p *ngIf="message!=null" style="color: red;">{{message}}</p>
     </div>
   </div>
 </div>
