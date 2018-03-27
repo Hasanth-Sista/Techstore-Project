@@ -13,10 +13,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cart: Cart[] = [];
+  cart: Cart;
   user: UserDetails;
+  product2: Array<Product>;
+
+
   constructor(private searchService: SearchService, private loginService: LoginService,
-    private cartService: CartService, private router: Router) { }
+    private cartService: CartService, private router: Router) {
+
+  }
 
   ngOnInit() {
     var that = this;
@@ -25,14 +30,27 @@ export class CartComponent implements OnInit {
       if (that.user == null) {
         that.router.navigate(['./login']);
       }
-      else{
-        that.cartService.getCartDetails(this.cart).subscribe(
-          (success)=>{
-            console.log(success); 
-          }
-        )
-      }
     });
+    this.product2 = new Array<Product>();
+    this.product2 = that.cartService.getCartDetails().product;
+  }
+
+  update(quan:Number,id:String){
+    if(quan<0){
+      alert("Quantity cannot be negative");
+    }
+    this.cart=new Cart();
+    this.cart.product=new Array<Product>();
+    for(let prod of this.product2){
+      if(prod.product_id==id){
+        prod.quantity=quan;
+      }
+      this.cart.product.push(prod);
+    }
+    
+    this.cartService.cartObject.subscribe(cart=>this.cart=cart);
+    console.log(this.cart);
+    return false;
   }
 
 }

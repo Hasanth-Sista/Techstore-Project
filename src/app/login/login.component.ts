@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   signIn() {
     if (this.user.email == null || this.user.password == null) {
       this.message = "All fields are mandatory";
+      alert(this.message);
       this.router.navigate(['./login']);
     } else {
       this.service.signInUser(this.user).subscribe(
@@ -40,8 +41,17 @@ export class LoginComponent implements OnInit {
           } else {
             this.user.username = success.output['user_name'];
             this.user.email = success.output['email'];
+            this.user.role = success.output['role'];
             this.loginService.changeObject(this.user);
-            this.router.navigate(['']);
+
+            this.cartService.getCartFromDb(this.user).subscribe(
+              (success)=>{
+                console.log(success);
+              },(error)=>{
+                
+              }
+            );
+            //this.router.navigate(['']);
           }
         },
         (error) => {

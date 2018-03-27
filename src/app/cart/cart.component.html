@@ -1,31 +1,42 @@
 <div class=row style="padding: 10px;">
-    <div class="col-xl-2">
-    </div>
-    Hiiiiii
-    <div class="col-xl-10">
-      <div class="row" *ngFor="">
-        <div class="col-xl-9">
-          <table>
-            <tr>
-              <td class="title"></td>
-              <td class="textfont">
-              </td>
-            </tr>
-  
-            <tr>
-              <td class="title">Product Description</td>
-              <td class="textfont">
-              </td>
-            </tr>
-  
-            <tr>
-              <td class="title">Product Price</td>
-              <td class="textfont">
-              </td>
-            </tr>
-          </table>
-        </div>
+  <div class="col-xl-2">
+  </div>
+  <div class="col-xl-10">
+    <div class="row" *ngFor="let prod of product2">
+      <div class="col-xl-3">
+        <img src="assets/images/{{prod.product_img}}.png">
+      </div>
+      <div class="col-xl-9">
+        <table>
+          <tr>
+            <td class="title">Product Name</td>
+            <td class="textfont">
+              {{prod.product_name}}
+            </td>
+          </tr>
+          <tr>
+            <td class="title">Product Description</td>
+            <td class="textfont">
+              {{prod.product_desc}}
+            </td>
+          </tr>
+          <tr>
+            <td class="title">Product Price</td>
+            <td class="textfont">
+              <div>{{prod.product_price}}$</div>
+            </td>
+          </tr>
+          <tr>
+            <td class="title">Quantity</td>
+            <td class="textfont">
+              <div><input type="number" value="{{prod.quantity}}" #quantity id="quantity"></div>
+            </td>
+          </tr>
+          <div>
+            <input type="button" value="Update" (click)="update(quantity.value,prod.product_id)">
+          </div>
+        </table>
       </div>
     </div>
   </div>
-  
+</div>

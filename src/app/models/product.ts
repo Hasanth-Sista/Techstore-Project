@@ -7,5 +7,6 @@ export class Product {
     product_name :String;
     product_desc : String;
     product_type : String;
-    product_specs:ProductSpecs
+    product_specs:ProductSpecs;
+    quantity:Number;
 }

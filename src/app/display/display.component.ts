@@ -19,6 +19,8 @@ export class DisplayComponent implements OnInit {
   cart:Cart;
   user:UserDetails;
   message:String;
+  product1:Product;
+
   constructor(private searchService : SearchService,private router:Router,
     private cartService:CartService,private loginService:LoginService) { }
 
@@ -43,11 +45,9 @@ export class DisplayComponent implements OnInit {
     );
   }
 
-  addToCart(id:String,price:String){
-    this.cart=new Cart();
-    this.cart.product_id=id;
-    this.cart.price=Number(price);
-    this.message="Product Id "+id+"  "+this.cartService.changeCart(this.cart);
+  addToCart(prod:Product){
+    this.message="Product Id "+prod.product_id+"  "+this.cartService.changeCart(prod);
+    alert(this.message);
   }
 
 }

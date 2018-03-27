@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { SpecificationsComponent } from './specifications/specifications.component';
 import { CartComponent } from './cart/cart.component';
+import { AdminComponent } from './admin/admin.component';
 
 const APP_ROUTES: Routes = [
   { path: 'main', component : MainComponent },  
@@ -21,7 +22,8 @@ const APP_ROUTES: Routes = [
     {path:'contact',component:ContactComponent},
     {path:'specs',component:SpecificationsComponent},
     {path:'cart',component:CartComponent},
-    { path: '', redirectTo:'/main', pathMatch:'full' }
+    { path: '', redirectTo:'/main', pathMatch:'full' },
+    {path:'admin',component:AdminComponent}
 ];
 
 @NgModule({

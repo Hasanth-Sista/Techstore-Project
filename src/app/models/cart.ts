@@ -1,5 +1,9 @@
+import { Product } from "./product";
+import { ProductQuantity } from "./product-quantity";
+import { ProductSpecs } from "./product-specs";
+
 export class Cart {
-    product_id : String;
-    quantity : Number;
-    price : Number;
+    
+    product:Product[];
+    productQuan:ProductSpecs[];
 }

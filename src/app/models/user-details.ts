@@ -11,6 +11,6 @@ export class UserDetails {
     password : String;
     confirmPassword:String;
     phone : String;
-
     message:String;
+    role:String;
 }

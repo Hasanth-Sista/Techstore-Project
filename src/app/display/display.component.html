@@ -35,14 +35,11 @@
           </tr>
           <tr>
             <div>
-              <input value="Add to Cart" (click)="addToCart(prod.product_id,prod.product_price)" type="button">
+              <input value="Add to Cart" (click)="addToCart(prod)" type="button">
             </div>
           </tr>
         </table>
       </div>
-    </div>
-    <div>
-      <p *ngIf="message!=null" style="color: red;">{{message}}</p>
     </div>
   </div>
 </div>

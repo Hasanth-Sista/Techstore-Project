@@ -18,6 +18,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './services/cart.service';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CartService } from './services/cart.service';
     SpecificationsComponent,
     AboutComponent,
     ContactComponent,
-    CartComponent
+    CartComponent,
+    AdminComponent
   ],
   imports: [
     AppRoutingModule,    

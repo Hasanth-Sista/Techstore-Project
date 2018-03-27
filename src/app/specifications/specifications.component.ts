@@ -18,6 +18,7 @@ export class SpecificationsComponent implements OnInit {
   cart:Cart;
   user:UserDetails;
   message:String;
+  product1:Product;
 
   constructor(private searchService:SearchService,private route:Router,
     private cartService:CartService,private loginService:LoginService)
@@ -29,11 +30,9 @@ export class SpecificationsComponent implements OnInit {
     this.loginService.userObject.subscribe(user=>this.user=user);   
     this.message=null;
   }
-  addToCart(id:String,price:String){
-    this.cart=new Cart();
-    this.cart.product_id=id;
-    this.cart.price=Number(price);
-    this.message="Product id "+id+"  "+this.cartService.changeCart(this.cart);
+  addToCart(prod:Product){
+    this.message="Product id "+prod.product_id+"  "+this.cartService.changeCart(prod);
+    alert(this.message);
   }
   
 }

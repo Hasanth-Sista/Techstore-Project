@@ -24,6 +24,7 @@ export class SignupComponent implements OnInit {
       this.user.password == null || this.user.confirmPassword == null || this.user.address == null
       || this.user.city == null || this.user.phone == null || this.user.email == null) {
       this.message = "All fields are mandatory";
+      alert(this.message);
       this.router.navigate(['./signup']);
     }
     if (this.message == '') {
@@ -31,6 +32,7 @@ export class SignupComponent implements OnInit {
         (success) => {
           console.log(success.output);
           this.message = success.output['message'];
+          alert(this.message);
           this.router.navigate(['./signup']);
         },
         (error) => {

@@ -55,9 +55,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['./login']);
   }
   logoutClick(){
-    this.loginService.changeObject(null);
     this.cartService.zeroCart();
-    this.router.navigate(['']);
   }
   signUpClick(){
     this.router.navigate(['./signup']);

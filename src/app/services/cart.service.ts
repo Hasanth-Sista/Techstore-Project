@@ -8,33 +8,58 @@ import { SearchService } from './search.service';
 import { LoginService } from './login.service';
 import { Cart } from '../models/cart';
 import { Subject } from 'rxjs/Subject';
+import { Router } from '@angular/router';
+import { UserCart } from '../models/user-cart';
 
 @Injectable()
 export class CartService {
-  cart:Cart[]=[];
-  product:Product;
+  cart:Cart;
+  user:UserDetails;
+  userCart:UserCart;
 
   private behaviorObjectCart = new BehaviorSubject<Cart>(null);
   cartObject = this.behaviorObjectCart.asObservable();
+  
 
-  constructor(private http:Http,private searchService:SearchService,private loginService:LoginService)
-   { }
+  constructor(private http:Http,private router:Router,private searchService:SearchService,private loginService:LoginService)
+   {this.cart=new Cart();this.cart.product=new Array<Product>();
+    this.userCart=new UserCart(); }
+
 
   zeroCart(){
-    this.cart=[];
-    console.log(this.cart);
+    this.loginService.userObject.subscribe(user=>this.user=user);
+    
+    // this.userCart.user=new UserDetails();
+    // this.userCart.cart=new Cart();
+    this.userCart.user=this.user;
+    this.userCart.cart=this.cart;
+    console.log(this.userCart);
+    this.http.post("http://localhost:3000/postCart",this.userCart).map(res=>res.json());
+  
+    //this.loginService.changeObject(null);
+    //this.clearCart(null);
   } 
 
-  changeCart(cart: Cart) {
-    this.cart.push(cart);
-    this.behaviorObjectCart.next(cart);
-    console.log(this.cart);
+  changeCart(prod: Product) {
+    prod.quantity=1;
+    this.cart.product.push(prod);
+    this.behaviorObjectCart.next(this.cart);
     return "Added to cart successfully";
   }
 
-  getCartDetails(cart : Cart[]){
-    return this.http.post("http://localhost:3000/cartDetails",this.cart).map(res=>res.json());
+  clearCart(cart:Cart) {
+    this.behaviorObjectCart.next(null);
+    this.cart.product=new Array<Product>();
   }
 
+  getCartDetails(){
+    return this.cart;
+  }
+
+  getCartFromDb(user:UserDetails){
+    this.loginService.userObject.subscribe(user=>this.user=user);
+    console.log(this.user);
+    return this.http.post("http://localhost:3000/getCartDetailsOfUser",this.user).map(res=>res.json());
+  }
 
 }

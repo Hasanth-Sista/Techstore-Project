@@ -27,6 +27,7 @@ export class SearchService {
   }
 
   signUpUser(user:UserDetails){
+    user.role="user";
     return this.http.post("http://localhost:3000/signup/",user).map(res=>res.json());
   }
 

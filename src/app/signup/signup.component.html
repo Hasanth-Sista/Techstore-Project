@@ -5,11 +5,6 @@
       <form (submit)="onSignUpSubmit()">
         <div class="col-sm-12">
           <div class="row">
-            <p *ngIf="message!=null">
-              <output>{{message}}</output>
-            </p>
-          </div>
-          <div class="row">
             <div class="col-sm-4 form-group">
               <label>User Name</label>
               <input [(ngModel)]="user.username" name="username" type="text" placeholder="Enter User Name"
