@@ -1,4 +1,4 @@
 export class ProductQuantity {
     product_id : String;
-    product_quantity : Number;
+    product_quantity : number;
 }

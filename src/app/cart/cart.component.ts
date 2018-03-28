@@ -6,6 +6,7 @@ import { UserDetails } from '../models/user-details';
 import { Cart } from '../models/cart';
 import { CartService } from '../services/cart.service';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +18,7 @@ export class CartComponent implements OnInit {
   user: UserDetails;
   product2: Array<Product>;
 
-
+    
   constructor(private searchService: SearchService, private loginService: LoginService,
     private cartService: CartService, private router: Router) {
 
@@ -33,22 +34,28 @@ export class CartComponent implements OnInit {
     });
     this.product2 = new Array<Product>();
     this.product2 = that.cartService.getCartDetails().product;
+
+    //this.cartService.cartObject.subscribe(cart=>this.cart=cart);
+    this.cart=that.cartService.getCartDetails();
+    console.log(this.cart);
+    this.product2 = this.cart.product;
   }
 
-  update(quan:Number,id:String){
-    if(quan<0){
+  update(quan:number,id: String) {
+    //console.log(quan, id);
+    if (quan < 0) {
       alert("Quantity cannot be negative");
     }
-    this.cart=new Cart();
-    this.cart.product=new Array<Product>();
-    for(let prod of this.product2){
-      if(prod.product_id==id){
-        prod.quantity=quan;
+    this.cart = new Cart();
+    this.cart.product = new Array<Product>();
+    for (let prod of this.product2) {
+      if (prod.product_id === id) {
+        prod.quantity = +quan;
       }
       this.cart.product.push(prod);
     }
-    
-    this.cartService.cartObject.subscribe(cart=>this.cart=cart);
+
+    this.cartService.cartObject.subscribe(cart => this.cart = cart);
     console.log(this.cart);
     return false;
   }

@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   user: UserDetails;
   message: String;
   cart: Cart;
+  cart1: Cart;
 
   constructor(private service: SearchService, private router: Router,
     private loginService: LoginService, private cartService: CartService) { }
@@ -43,15 +44,30 @@ export class LoginComponent implements OnInit {
             this.user.email = success.output['email'];
             this.user.role = success.output['role'];
             this.loginService.changeObject(this.user);
-
+            
+            if (this.cart != null) {
+              this.cart1 = new Cart();
+              this.cart1 = this.cart;
+            }
+            console.log(this.cart1);
             this.cartService.getCartFromDb(this.user).subscribe(
-              (success)=>{
-                console.log(success);
-              },(error)=>{
-                
+              (success) => {
+                this.cart = success.output[0].cart;
+                if (this.cart1 != null) {
+                  for (let prod of this.cart1.product) {
+                    this.cart.product.push(prod);
+                  }
+                }
+                console.log(this.cart);
+                this.cartService.subChangeCart(this.cart);
+
+              }, (error) => {
+
               }
             );
-            //this.router.navigate(['']);
+            console.log(this.cart1);
+            console.log(this.cart);
+            this.router.navigate(['']);
           }
         },
         (error) => {
