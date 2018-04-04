@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {Ng2PaginationModule} from 'ng2-pagination';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -40,7 +41,8 @@ import { AdminComponent } from './admin/admin.component';
     AppRoutingModule,    
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    Ng2PaginationModule 
   ],
   providers: [SearchService,LoginService,CartService],
   bootstrap: [AppComponent]

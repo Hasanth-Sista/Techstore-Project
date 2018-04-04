@@ -19,3 +19,6 @@ tr{
 .textfont{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+.paging{
+    margin-left: 35%;
+}  

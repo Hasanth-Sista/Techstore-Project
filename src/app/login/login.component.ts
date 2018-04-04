@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     this.cartService.cartObject.subscribe(cart => this.cart = cart);
   }
   signIn() {
+    console.log("in signin");
     if (this.user.email == null || this.user.password == null) {
       this.message = "All fields are mandatory";
       alert(this.message);
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit {
               this.cart1 = new Cart();
               this.cart1 = this.cart;
             }
-            console.log(this.cart1);
+            //console.log(this.cart1);
             this.cartService.getCartFromDb(this.user).subscribe(
               (success) => {
                 this.cart = success.output[0].cart;
@@ -65,8 +66,8 @@ export class LoginComponent implements OnInit {
 
               }
             );
-            console.log(this.cart1);
-            console.log(this.cart);
+            //console.log(this.cart1);
+            //console.log(this.cart);
             this.router.navigate(['']);
           }
         },

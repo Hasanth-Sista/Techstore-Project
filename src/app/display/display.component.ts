@@ -7,6 +7,7 @@ import { CartService } from '../services/cart.service';
 import { Cart } from '../models/cart';
 import { UserDetails } from '../models/user-details';
 import { LoginService } from '../services/login.service';
+import {Ng2PaginationModule} from 'ng2-pagination';
 
 @Component({
   selector: 'app-display',

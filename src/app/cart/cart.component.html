@@ -29,7 +29,9 @@
           <tr>
             <td class="title">Quantity</td>
             <td class="textfont">
-              <div><input type="number" #quantity value="{{prod.quantity}}" id="quantity"></div>
+              <div>
+                <input type="number" #quantity value="{{prod.quantity}}" id="quantity">
+              </div>
             </td>
           </tr>
           <div>
@@ -37,6 +39,13 @@
           </div>
         </table>
       </div>
+    </div>
+
+    <div class="col-xl-3">
+    </div>
+    <div class="col-xl-9">
+      <button type="button" (click)="checkOut()" style="width: 60%;height: 5%;margin-left: 30%;margin-top: 10%;">
+        CheckOut</button>
     </div>
   </div>
 </div>

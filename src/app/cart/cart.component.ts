@@ -18,7 +18,9 @@ export class CartComponent implements OnInit {
   user: UserDetails;
   product2: Array<Product>;
 
-    
+  message: String;
+
+
   constructor(private searchService: SearchService, private loginService: LoginService,
     private cartService: CartService, private router: Router) {
 
@@ -35,26 +37,62 @@ export class CartComponent implements OnInit {
     this.product2 = new Array<Product>();
     this.product2 = that.cartService.getCartDetails().product;
 
-    //this.cartService.cartObject.subscribe(cart=>this.cart=cart);
-    this.cart=that.cartService.getCartDetails();
+    this.cartService.cartObject.subscribe(cart => this.cart = cart);
+    this.cart = that.cartService.getCartDetails();
     console.log(this.cart);
+
     this.product2 = this.cart.product;
   }
 
-  update(quan:number,id: String) {
+  checkOut() {
+    this.cartService.cartObject.subscribe(cart => this.cart = cart);
+
+    this.cartService.checkCart(this.cart.product).subscribe(
+      (success) => {
+        if(success[0] != "success"){
+          alert(success);
+        }
+        else{
+          var confirmation=confirm("Do you want to checkout?");
+          if(confirmation){
+            this.cartService.checkOutCart().subscribe(
+              (success)=>{
+
+              }
+            );
+            alert("Successfully checked out items");
+            this.router.navigate(['']);
+          }
+        }
+      },
+      (error) => {
+      }
+    );
+
+
+  }
+  update(quan: number, id: String) {
     //console.log(quan, id);
     if (quan < 0) {
       alert("Quantity cannot be negative");
     }
-    this.cart = new Cart();
-    this.cart.product = new Array<Product>();
-    for (let prod of this.product2) {
-      if (prod.product_id === id) {
-        prod.quantity = +quan;
+    if (quan == 0) {
+      for (let prod of this.product2) {
+        if (prod.product_id === id) {
+          var index = this.cart.product.indexOf(prod);
+          this.cart.product.splice(index, 1);
+        }
       }
-      this.cart.product.push(prod);
+    } else {
+      this.cart = new Cart();
+      this.cart.product = new Array<Product>();
+      for (let prod of this.product2) {
+        if (prod.product_id === id) {
+          prod.quantity = +quan;
+        }
+        this.cart.product.push(prod);
+      }
     }
-
     this.cartService.cartObject.subscribe(cart => this.cart = cart);
     console.log(this.cart);
     return false;
