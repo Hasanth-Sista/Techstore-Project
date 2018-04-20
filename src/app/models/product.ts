@@ -9,4 +9,5 @@ export class Product {
     product_type : String;
     product_specs:ProductSpecs;
     quantity: number;
+    flag :boolean;
 }

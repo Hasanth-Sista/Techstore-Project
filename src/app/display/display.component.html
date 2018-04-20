@@ -2,11 +2,11 @@
   <div class="col-xl-2">
   </div>
   <div class="col-xl-10">
-    <div class="row" *ngFor="let prod of product | paginate: {itemsPerPage: 1, currentPage:page, id: '1'}; let i=index">
-      <div class="col-xl-3">
-        <img src="assets/images/{{prod.product_img}}.png">
+    <div class="row" *ngFor="let prod of product | paginate: {itemsPerPage: 3, currentPage:page, id: '1'}; let i=index">
+      <div class="col-xl-3" *ngIf="prod.flag==true">
+        <img src="{{prod.product_img}}">
       </div>
-      <div class="col-xl-9">
+      <div class="col-xl-9" *ngIf="prod.flag==true">
         <table>
           <tr>
             <td class="title">Product Name</td>

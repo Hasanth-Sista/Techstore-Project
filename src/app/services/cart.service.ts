@@ -26,6 +26,9 @@ export class CartService {
     this.cart = new Cart(); this.cart.product = new Array<Product>();
     this.userCart = new UserCart();
   }
+  orderHistory(user:UserDetails) {
+    return this.http.get("http://localhost:3000/orderHistory/" + user.email).map(res => res.json());
+  }
 
   checkCart(prod: Product[]) {
     let requests = [];
@@ -98,19 +101,23 @@ export class CartService {
 
   checkOutCart() {
     console.log(this.cart);
-    let requests=[];
+    let requests = [];
 
     this.loginService.userObject.subscribe(user => this.user = user);
     this.cartObject.subscribe(cart => this.cart = cart);
     this.userCart.user = this.user;
     this.userCart.cart = this.cart;
 
-    this.http.post("http://localhost:3000/addCheckedOutCart",this.userCart).map(res=>res.json()).subscribe();
-    
+    this.http.post("http://localhost:3000/addCheckedOutCart", this.userCart).map(res => res.json()).subscribe();
+
     for (var i = 0; i < this.cart.product.length; i++) {
       requests.push(this.http.post("http://localhost:3000/checkOutCart", this.cart.product[i]).map(res => res.json()));
     }
-    
+
+    this.cartObject.subscribe(null);
+    this.cart=new Cart();
+    this.behaviorObjectCart.subscribe(null);
+
     return Observable.forkJoin(requests).map((data: any[]) => {
       return "";
     });

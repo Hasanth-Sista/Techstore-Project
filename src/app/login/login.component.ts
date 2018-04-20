@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
             this.user.email = success.output['email'];
             this.user.role = success.output['role'];
             this.loginService.changeObject(this.user);
-            
+
             if (this.cart != null) {
               this.cart1 = new Cart();
               this.cart1 = this.cart;
@@ -53,15 +53,16 @@ export class LoginComponent implements OnInit {
             //console.log(this.cart1);
             this.cartService.getCartFromDb(this.user).subscribe(
               (success) => {
-                this.cart = success.output[0].cart;
-                if (this.cart1 != null) {
-                  for (let prod of this.cart1.product) {
-                    this.cart.product.push(prod);
+                if (success.output.length != 0) {
+                  this.cart = success.output[0].cart;
+                  if (this.cart1 != null) {
+                    for (let prod of this.cart1.product) {
+                      this.cart.product.push(prod);
+                    }
                   }
+                  console.log(this.cart);
+                  this.cartService.subChangeCart(this.cart);
                 }
-                console.log(this.cart);
-                this.cartService.subChangeCart(this.cart);
-
               }, (error) => {
 
               }

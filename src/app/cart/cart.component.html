@@ -1,12 +1,18 @@
-<div class=row style="padding: 10px;">
+<div style="padding: 20px;">
+
+  <button type="button" (click)="orderHistory()">Order History</button>
+
+</div>
+<div class=row style="padding: 10px;" *ngIf="product5==null">
   <div class="col-xl-2">
+
   </div>
   <div class="col-xl-10">
     <div class="row" *ngFor="let prod of product2">
-      <div class="col-xl-3">
-        <img src="assets/images/{{prod.product_img}}.png">
+      <div class="col-xl-3" *ngIf="prod!=null"> 
+        <img src="{{prod.product_img}}">
       </div>
-      <div class="col-xl-9">
+      <div class="col-xl-9" *ngIf="prod!=null">
         <table>
           <tr>
             <td class="title">Product Name</td>
@@ -44,8 +50,49 @@
     <div class="col-xl-3">
     </div>
     <div class="col-xl-9">
-      <button type="button" (click)="checkOut()" style="width: 60%;height: 5%;margin-left: 30%;margin-top: 10%;">
+      <button type="button" *ngIf="product5==null" (click)="checkOut()" style="width: 60%;height: 5%;margin-left: 30%;margin-top: 10%;">
         CheckOut</button>
+    </div>
+  </div>
+</div>
+
+
+<div class=row style="padding: 10px;" *ngIf="product5!=null">
+  <div class="col-xl-2">
+  </div>
+  <div class="col-xl-10">
+    <div class="row" *ngFor="let prod of product5">
+      <div class="col-xl-3">
+        <img src="{{prod.product_img}}">
+      </div>
+      <div class="col-xl-9">
+        <table>
+          <tr>
+            <td class="title">Product Name</td>
+            <td class="textfont">
+              {{prod.product_name}}
+            </td>
+          </tr>
+          <tr>
+            <td class="title">Product Description</td>
+            <td class="textfont">
+              {{prod.product_desc}}
+            </td>
+          </tr>
+          <tr>
+            <td class="title">Product Price</td>
+            <td class="textfont">
+              <div>{{prod.product_price}}$</div>
+            </td>
+          </tr>
+          <tr>
+            <td class="title">Quantity</td>
+            <td class="textfont">
+              <div>{{prod.quantity}}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>

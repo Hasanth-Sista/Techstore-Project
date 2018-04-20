@@ -7,13 +7,11 @@
           <div class="row">
             <div class="col-sm-4 form-group">
               <label>User Name</label>
-              <input [(ngModel)]="user.username" name="username" type="text" placeholder="Enter User Name"
-                class="form-control" required>
+              <input [(ngModel)]="user.username" name="username" type="text" placeholder="Enter User Name" class="form-control" required>
             </div>
             <div class="col-sm-4 form-group">
               <label>First Name</label>
-              <input [(ngModel)]="user.firstname" name="firstname" type="text" placeholder="Enter First Name"
-                class="form-control" required>
+              <input [(ngModel)]="user.firstname" name="firstname" type="text" placeholder="Enter First Name" class="form-control" required>
             </div>
 
             <div class="col-sm-4 form-group">
@@ -39,7 +37,14 @@
           <div class="row">
             <div class="col-sm-4 form-group">
               <label>Password</label>
-              <input required [(ngModel)]="user.password" name="password" type="password" placeholder="Enter Password" class="form-control">
+              <input id="password" required [(ngModel)]="user.password" name="password" type="password" placeholder="Enter Password" class="form-control">
+
+              <span *ngIf="user.password!=null && !user.password.match('^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}$')">
+                <p>
+                  Not a valid password. Should contain atleast 1 capital alphabet, 1 small alphabet, 1 number, 1 special character with minimum
+                  length of 8
+                </p>
+              </span>
             </div>
             <div class="col-sm-4 form-group">
               <label>Confirm Password</label>

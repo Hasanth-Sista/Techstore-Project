@@ -1,3 +1,488 @@
-<p>
-  admin works!
-</p>
+<h2>
+  Admin Role</h2>
+<div class="container">
+  <button type="button" (click)="displayProducts()">Display items</button>
+</div>
+
+<div class="add" *ngIf="product==null && updateProd==null">
+  <div class=row style="padding: 10px;">
+    <div class="col-xl-2">
+    </div>
+    <div class="col-xl-10">
+      <div class="row">
+        <div class="col-xl-3">
+          <img src="{{addProd.product_img}}">
+        </div>
+        <div class="col-xl-9">
+          <table>
+
+            <tr>
+              <td class="title">Product Id</td>
+              <td class="textfont">
+                <input type="number" [(ngModel)]="addProd.product_id">
+              </td>
+            </tr>
+            <tr>
+              <td class="title">Product Name</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProd.product_name">
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Product Type</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProd.product_type">
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Product Description</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProd.product_desc">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Product Quantity</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProd.quantity">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Product Price</td>
+              <td class="textfont">
+                <input type="number" [(ngModel)]="addProd.product_price">$
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Screen Size</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.screen_size">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Touch Screen</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.touch_screen">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Ram</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.ram">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">OS</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.os">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Hard Disk</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.hard_disk">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Processor</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.processor">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Dimensions</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.dimensions">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Batteries</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.batteries">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Camera</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.camera">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Memory</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.memory">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Storage</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.storage">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Resolution</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.resolution">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Weight</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.weight">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Wifi</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.Wifi">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Printer Type</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.printer_type">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Capacity</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.capacity">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Transfer Speed</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.transfer_speed">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Ink Color</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.ink_color">
+
+              </td>
+            </tr>
+            <tr>
+              <td class="title">Model Number</td>
+              <td class="textfont">
+                <input [(ngModel)]="addProdSpecs.model_number">
+              </td>
+            </tr>
+          </table>
+
+          <label class="title">Product Image</label>
+
+          <input name="product_img" id="product_img" type="file" (change)="handleFileInput($event.target.files)" multiple accept='image/*'
+            #fileInput required>
+          <button type="button" class="btn btn-sm btn-default" (click)="addUpload()">Upload file</button>
+          <button type="button" class="btn btn-sm btn-default" (click)="addClearFile()">Clear file</button>
+          <br>
+          <br>
+          <button type="button" (click)="addProduct()">Add</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="display" *ngIf="product!=null">
+  <div class=row style="padding: 10px;">
+    <div class="col-xl-2">
+    </div>
+    <div class="col-xl-10">
+      <div class="row" *ngFor="let prod of product | paginate: {itemsPerPage: 5, currentPage:page, id: '1'}; let i=index">
+        <div class="col-xl-3" *ngIf="prod.flag==true">
+          <img src="{{prod.product_img}}">
+        </div>
+        <div class="col-xl-9" *ngIf="prod.flag==true">
+          <table>
+            <tr>
+              <td class="title">Product Name</td>
+              <td class="textfont">
+                {{prod.product_name}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Product Description</td>
+              <td class="textfont">
+                {{prod.product_desc}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Product Price</td>
+              <td class="textfont">
+                <div>{{prod.product_price}}$</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button type="button" (click)="updateProduct(prod)">Update</button>
+              </td>
+              <td>
+                <button type="button" (click)="deleteProduct(prod)">Delete</button>
+              </td>
+            </tr>
+            <br>
+            <br>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="paging">
+    <pagination-controls (pageChange)="page = $event" id="1" maxSize="5" directionLinks="true" autoHide="true">
+    </pagination-controls>
+  </div>
+</div>
+
+
+
+<div class="update" *ngIf="updateProd!=null">
+  <div class=row style="padding: 10px;">
+    <div class="col-xl-2">
+    </div>
+    <div class="col-xl-10">
+      <div class="row">
+        <div class="col-xl-3">
+          <img src="{{updateProd.product_img}}">
+        </div>
+        <div class="col-xl-9">
+          <table>
+            <tr>
+              <td class="title">Product Name</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_name">
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Product Description</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_desc">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="title">Product Price</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_price">$
+              </td>
+            </tr>
+            <tr>
+              <td class="title">Product Quantity</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.quantity">
+              </td>
+            </tr>
+
+
+            <tr *ngIf="updateProd.product_specs.screen_size!=null">
+              <td class="title">Screen Size</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.screen_size">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.touch_screen!=null">
+              <td class="title">Touch Screen</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.touch_screen">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.ram!=null">
+              <td class="title">Ram</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.ram">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.os!=null">
+              <td class="title">OS</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.os">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.hard_disk!=null">
+              <td class="title">Hard Disk</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.hard_disk">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.processor!=null">
+              <td class="title">Processor</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.processor">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.dimensions!=null">
+              <td class="title">Dimensions</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.dimensions">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.batteries!=null">
+              <td class="title">Batteries</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.batteries">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.camera!=null">
+              <td class="title">Camera</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.camera">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.memory!=null">
+              <td class="title">Memory</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.memory">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.storage!=null">
+              <td class="title">Storage</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.storage">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.resolution!=null">
+              <td class="title">Resolution</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.resolution">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.weight!=null">
+              <td class="title">Weight</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.weight">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.Wifi!=null">
+              <td class="title">Wifi</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.Wifi">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.printer_type!=null">
+              <td class="title">Printer Type</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.printer_type">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.capacity!=null">
+              <td class="title">Capacity</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.capacity">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.transfer_speed!=null">
+              <td class="title">Transfer Speed</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.transfer_speed">
+
+              </td>
+            </tr>
+
+            <tr *ngIf="updateProd.product_specs.ink_color!=null">
+              <td class="title">Ink Color</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.ink_color">
+
+              </td>
+            </tr>
+            <tr *ngIf="updateProd.product_specs.model_number!=null">
+              <td class="title">Model Number</td>
+              <td class="textfont">
+                <input [(ngModel)]="updateProd.product_specs.model_number">
+              </td>
+            </tr>
+
+          </table>
+          <label class="title">Product Image</label>
+
+          <input name="product_img" id="product_img" type="file" (change)="handleFileInput($event.target.files)" multiple accept='image/*'
+            #fileInput required>
+          <button type="button" class="btn btn-sm btn-default" (click)="updateUpload()">Upload file</button>
+          <button type="button" class="btn btn-sm btn-default" (click)="updateClearFile()">Clear file</button>
+          <br>
+          <br>
+          <button type="button" (click)="updateProductAfter()">Update</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,11 +18,32 @@ export class CartComponent implements OnInit {
   user: UserDetails;
   product2: Array<Product>;
 
+  product5: Array<Product>;
+  cartDisplay: Cart;
+
   message: String;
 
 
   constructor(private searchService: SearchService, private loginService: LoginService,
     private cartService: CartService, private router: Router) {
+
+  }
+
+  orderHistory() {
+    this.product5 = new Array<Product>();
+
+    this.cartService.orderHistory(this.user).subscribe(
+      (success) => {
+        console.log(success.output);
+
+        for (var i = 0; i < success.output.length; i++) {
+          this.cartDisplay = success.output[i].cart;
+          for (var j = 0; j < this.cartDisplay.product.length; j++) {
+            this.product5.push(this.cartDisplay.product[j]);
+          }
+        }
+      }
+    );
 
   }
 
@@ -47,28 +68,29 @@ export class CartComponent implements OnInit {
   checkOut() {
     this.cartService.cartObject.subscribe(cart => this.cart = cart);
 
-    this.cartService.checkCart(this.cart.product).subscribe(
-      (success) => {
-        if(success[0] != "success"){
-          alert(success);
-        }
-        else{
-          var confirmation=confirm("Do you want to checkout?");
-          if(confirmation){
-            this.cartService.checkOutCart().subscribe(
-              (success)=>{
-
-              }
-            );
-            alert("Successfully checked out items");
-            this.router.navigate(['']);
+    if (this.cart.product != null) {
+      this.cartService.checkCart(this.cart.product).subscribe(
+        (success) => {
+          if (success[0] != "success") {
+            alert(success);
           }
-        }
-      },
-      (error) => {
-      }
-    );
+          else {
+            var confirmation = confirm("Do you want to checkout?");
+            if (confirmation) {
+              this.cartService.checkOutCart().subscribe(
+                (success) => {
 
+                }
+              );
+              alert("Successfully checked out items");
+              this.router.navigate(['']);
+            }
+          }
+        },
+        (error) => {
+        }
+      );
+    }
 
   }
   update(quan: number, id: String) {
